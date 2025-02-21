@@ -10,6 +10,12 @@
 #include <stdarg.h>
 #include <time.h>
 
+
+// forwards declarations that are independent of ifdefs
+char *lstd_shift(char **xs);
+void lstd_dsa_print_data(lstd_dynamic_string_array *da);
+static size_t first_index_of_needle(char* str, char needle);
+
 #ifdef LSTD_DSA
 #define LSTD_DSA_INITIAL_CAPACITY 256
 
@@ -26,7 +32,6 @@ void lstd_dsa_append_many(lstd_dynamic_string_array *da, size_t amount, ...);
 void lstd_dsa_remove_at(lstd_dynamic_string_array *da, size_t n);
 void lstd_dsa_pop(lstd_dynamic_string_array *da);
 void lstd_dsa_insert_at(lstd_dynamic_string_array *da, char *str, size_t n);
-char *lstd_shift(char **xs);
 
 
 void lstd_dsa_append(lstd_dynamic_string_array *da, char *str) {
@@ -195,6 +200,7 @@ static size_t first_index_of_needle(char* str, char needle) {
     return i;     
 }
 
+// TODO: fix multiple of needle causing empty strings to be appended
 lstd_dynamic_string_array lstd_string_split(char *str, char needle) {
     lstd_dynamic_string_array ret = {0};
     char* str_cpy = str;
