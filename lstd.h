@@ -110,6 +110,8 @@ void lstd_dsa_print_data(lstd_dynamic_string_array *da) {
 #endif // LSTD_NOPREFIX
 #endif // LSTD_DSA
 
+
+// these arent done, they SUCK
 #ifdef LSTD_MAP
 #define LSTD_MAP_INITIAL_CAPACITY 256
 
